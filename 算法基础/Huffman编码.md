@@ -46,7 +46,7 @@ D:011
 E:010
 ```
 
-参考：
+##### 参考：
 
 [1] 哈夫曼编码的理解(Huffman Coding)_网络_Never-Giveup的博客-CSDN博客
 https://blog.csdn.net/qq_36653505/article/details/81701181
