@@ -52,7 +52,7 @@ print(perry.name)  # perry
 ### Counter
 
 ```python
-# Counter，计数器，是字典的字类
+# Counter，计数器，是字典的子类
 # 返回一个以元素为key、元素个数为value的Counter对象集合
 from collections import Counter
 
