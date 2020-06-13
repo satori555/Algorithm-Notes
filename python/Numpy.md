@@ -1,6 +1,6 @@
 # Numpy
 
-### 1. 基本操作
+### 1. 创建与索引
 
 ```python
 import numpy as np
@@ -26,7 +26,13 @@ print(A[:, 1])
 print(A.flatten())  # 展开成一维
 for item in A.flat:
     print(item)
+```
 
+
+
+### 2. 合并与分割
+
+```python
 # 合并
 A = np.array([1, 1, 1])
 B = np.array([2, 2, 2])
@@ -40,7 +46,33 @@ np.vsplit(A, 3)
 np.hsplit(A, 2)
 ```
 
-### 2. 广播
+
+
+### 3. 扩展矩阵
+
+```python
+# 将一个小矩阵复制若干次变成大矩阵
+
+>>> a = np.array([[1,2,3]])
+>>> a.repeat(3, axis=0)
+array([[1, 2, 3],
+       [1, 2, 3],
+       [1, 2, 3]])
+
+>>> np.tile(a, (3,2,1))
+array([[[1, 2, 3],
+        [1, 2, 3]],
+
+       [[1, 2, 3],
+        [1, 2, 3]],
+
+       [[1, 2, 3],
+        [1, 2, 3]]])
+```
+
+
+
+### 4. 广播
 
 两个形状不同的张量做逐元素计算，如果没有歧义的话，较小的张量会被广播（Broadcast），以匹配较大的张量。
 
@@ -48,7 +80,7 @@ np.hsplit(A, 2)
 
 
 
-### 3. 张量转置
+### 5. 张量转置
 
 ```python
 import numpy as np
@@ -56,7 +88,7 @@ import numpy as np
 # np.transpose(a,(0, 1, 2)) 或 a.transpose(0, 1, 2)
 # 一维向量和二维矩阵的转置很好理解，主要看三维
 
->>> a = np.array([[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]])  # a.shape = (2, 2, 3)
+>>> a = np.arange(1, 13).reshape(2,2,3)
 >>> a
 array([[[ 1,  2,  3],
         [ 4,  5,  6]],
@@ -132,12 +164,10 @@ array([[[ 1,  7],
 
 
 
-### 4. 张量积
+### 6. 张量积
 
 ```python
 # 张量积
-
-import numpy as np
 
 a = np.ones((2,3))
 b = np.ones((3,4))
@@ -149,5 +179,13 @@ np.dot(a,b)
 # (a, b, c, d) . (d,) -> (a, b, c)
 # (a, b, c, d) . (d, e) -> (a, b, c, e)
 # (a, b, c, d) . (f, h, d, e) -> (a, b, c, f, h, e)
+```
+
+###  7. 数据统计
+
+```python
+# 范数
+# 最大、最小、均值、和
+# 比较函数
 ```
 
