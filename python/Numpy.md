@@ -1,27 +1,29 @@
 # Numpy
 
+### 1. 基本操作
+
 ```python
 import numpy as np
 
+# 创建数组
 a = np.array([[1, 2],
               [3, 4],
               [4, 5]]
             dtype=np.int32)
-b = np.ones(6).reshape(2, 3)
-np.dot(a, b)
-a.dot(b)
-np.cumsum(a)
-np.diff(a)
 
-# 生成随机数
+a = np.zeros((2,3))
+a = np.ones(6).reshape(2, 3)
+a = np.eye(2)  # 创建单位矩阵
+a = np.arange(1, 10, 2)
+a = np.linspace(1, 3, 4)
 a = np.random.randint(100, size=30)
 
 # 索引
 A = np.arange(3, 15).reshape(3, 4)
-print(A[2][1])
-print(A[2, 1])
+print(A[2][1])  # 直接索引
+print(A[2, 1])  # 切片索引
 print(A[:, 1])
-print(A.flatten())
+print(A.flatten())  # 展开成一维
 for item in A.flat:
     print(item)
 
@@ -38,7 +40,15 @@ np.vsplit(A, 3)
 np.hsplit(A, 2)
 ```
 
-### 张量转置
+### 2. 广播
+
+两个形状不同的张量做逐元素计算，如果没有歧义的话，较小的张量会被广播（Broadcast），以匹配较大的张量。
+
+两个张量的维度从后往前做比较，如果一个张量的形状是 `a, b, ..., n, n+1, ..., m` ，另一个张量的形状是 `n, n+1, ..., m` ，那么可以利用广播对这两个张量做逐元素运算。存在一些维度大小不相等时，如果有一个数组的该维度为 1，也可以广播。
+
+
+
+### 3. 张量转置
 
 ```python
 import numpy as np
@@ -121,4 +131,23 @@ array([[[ 1,  7],
 也可以放到三维坐标图里帮助理解，参考： https://www.cnblogs.com/xiaoboge/p/9682364.html 
 
 
+
+### 4. 张量积
+
+```python
+# 张量积
+
+import numpy as np
+
+a = np.ones((2,3))
+b = np.ones((3,4))
+
+a.dot(b)
+np.dot(a,b)
+
+# 形状匹配，如
+# (a, b, c, d) . (d,) -> (a, b, c)
+# (a, b, c, d) . (d, e) -> (a, b, c, e)
+# (a, b, c, d) . (f, h, d, e) -> (a, b, c, f, h, e)
+```
 
